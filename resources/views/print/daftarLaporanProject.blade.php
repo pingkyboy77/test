@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Daftar Laporan Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/logo-dewata.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Bootstrap Css -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
+
+    <link href="https://cdn.datatables.net/v/bs5/dt-2.0.6/datatables.min.css" rel="stylesheet">
+
+    <!-- plugin css -->
+    <link href="{{ asset('assets/libs/jsvectormap/css/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <style>
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        .sub-header {
+            text-align: left
+        }
+    </style>
+</head>
+
+{{-- dd($data); --}}
+<div class="header d-flex justify-content-center align-items-center">
+    <h2 class="fw-5">DEWATA WATERPROOFING NUSANTARA</h2>
+    <h2>Laporan Project Dewata</h2>
+</div>
+    
+    
+</div>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <td colspan="5" style="text-align: left; border:none"><span style="text-align: left">Bulan : {{ $bulan }}, Tahun : {{ $tahun }}</span></td>
+            <td colspan="5" style="text-align: right; border:none"><span style="text-align: right">Tanggal : {{ now()->format('d F Y') }}</span></td>
+        </tr>
+        <tr>
+            <th>No</th>
+            <th>Lokasi Proyek</th>
+            <th>Volume</th>
+            <th>Asal Warehouse</th>
+            <th>Stock</th>
+            <th>Tanggal Mulai</th>
+            <th>Tanggal Selesai</th>
+            <th>Kepala Project</th>
+            <th>Terakhir Diedit</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($data as $key => $history)
+            <tr>
+                <td>{{ $key + 1 }}</td>
+                <td>{{ $history->lokasi }}</td>
+                <td>{{ $history->volume }}</td>
+                <td>{{ $history->asal_warehouse }}</td>
+                <td>{{ $history->stock }}</td>
+                <td>{{ $history->waktu_mulai }}</td>
+                <td>{{ $history->waktu_selesai }}</td>
+                <td>{{ $history->kepala }}</td>
+                <td>{{ $history->edited_by }}</td>
+                <td>{{ $history->status ? $history->status : 'Belum Selesai' }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
+</body>
+
+</html>
